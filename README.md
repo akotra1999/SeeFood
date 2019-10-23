@@ -1,3 +1,5 @@
 # SeeFood
 
-DESCRIPTION: A group of diners can have a very difficult time deciding on a restaurant to visit. Instead of spending quality time with family and friends, people waste time on this trivial decision. SeeFood will solve this problem by choosing an amazing restaurant for you based on your preferences.
+DESCRIPTION: It's Saturday night, and your friend group needs to decide quickly on a restaurant. The process of searching and reviewing multiple restaurants takes time, especially when multiple cuisine types are requested. 
+
+SeeFood will solve this problem by finding the best-fit restaurant based on your preferences.
