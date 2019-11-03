@@ -36,6 +36,9 @@ public class SeeFoodServlet extends HttpServlet {
 	// this function handles POST requests
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		String cuisine = request.getParameter("cuisine");
+		String price = request.getParameter("price");
+		String distance = request.getParameter("distance");
 		request.getRequestDispatcher("/WEB-INF/jsp/ResultsPage.jsp").forward(request, response);
 	}
 

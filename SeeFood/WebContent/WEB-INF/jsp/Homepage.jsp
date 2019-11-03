@@ -46,7 +46,7 @@
 
 				<div class="col-sm-3">
 
-					<select class="selectpicker" id="cuisine">
+					<select class="selectpicker" name="cuisine">
 						<option selected>Cuisine</option>
 						<option value="Japanese">Japanese</option>
 						<option value="Chinese">Chinese</option>
@@ -60,7 +60,7 @@
 
 				<div class="col-sm-3">
 
-					<select class="selectpicker" id="price">
+					<select class="selectpicker" name="price">
 						<option selected>Price</option>
 						<option value="$">$</option>
 						<option value="$$">$$</option>
@@ -72,7 +72,7 @@
 
 				<div class="col-sm-3">
 
-					<select class="selectpicker" id="distance">
+					<select class="selectpicker" name="distance">
 						<option selected>Distance</option>
 						<option value="1">1 mi</option>
 						<option value="5">5 mi</option>
