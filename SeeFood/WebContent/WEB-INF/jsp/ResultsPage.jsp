@@ -22,10 +22,8 @@
 <style>
 <!--
 this is formatting for the card -->.card {
-	margin: 0 auto; /* Added */
+	margin: 10% auto; /* Added */
 	float: none; /* Added */
-	margin-bottom: 10%; /* Added */
-	margin-top: 10%; /* Added */
 }
 </style>
 
@@ -40,7 +38,7 @@ this is formatting for the card -->.card {
 		<!-- the card contains info regarding the chosen restaurant -->
 		<div class="card" style="width: 30rem;">
 
-			<img class="card-img-top" src="restaurant.jpg"
+			<img class="card-img-top" src=""
 				alt="Photo of restaurant">
 
 			<div class="card-body">
