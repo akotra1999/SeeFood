@@ -41,5 +41,9 @@ public class SeeFoodServlet extends HttpServlet {
 		String distance = request.getParameter("distance");
 		request.getRequestDispatcher("/WEB-INF/jsp/ResultsPage.jsp").forward(request, response);
 	}
+	
+	public int getCuisineID(String cuisine) {
+		return 73;
+	}
 
 }
