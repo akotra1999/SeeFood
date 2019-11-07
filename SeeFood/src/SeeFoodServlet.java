@@ -39,7 +39,12 @@ public class SeeFoodServlet extends HttpServlet {
 		String cuisine = request.getParameter("cuisine");
 		String price = request.getParameter("price");
 		String distance = request.getParameter("distance");
+		// this token is for the Zomato API
+		String token = "e91d6840e9bdbf46f2a077c83e2f62ea";
+
 		request.getRequestDispatcher("/WEB-INF/jsp/ResultsPage.jsp").forward(request, response);
+		
+		
 	}
 	
 	public int getCuisineID(String cuisine) {
