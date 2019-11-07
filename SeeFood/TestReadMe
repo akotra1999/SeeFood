@@ -1,0 +1,7 @@
+Put test file on the desktop (e.g. GithubClick.exe), then open the web app. System will auto click the button in the web.  
+In HomePageTest:  
+AllChoose.exe -> Set all drop down menu to the first choices, and click submit.  
+CuisineChoose.exe -> Choose first cuisine and click submit.  
+DistanceChoose.exe -> Choose first distance and click submit.  
+GithubClick.exe -> Click "Take a look at our code".  
+PriceChoose .exe -> Choose first price and click submit.  
