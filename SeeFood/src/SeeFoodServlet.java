@@ -25,6 +25,12 @@ import javax.ws.rs.core.Response;
 public class SeeFoodServlet extends HttpServlet {
 	Client client = ClientBuilder.newClient();
 
+	// this token is for the Zomato API
+	String token = "e91d6840e9bdbf46f2a077c83e2f62ea";
+	
+	double lat = 32.78306;
+	double lon = -96.80667;
+
 	// this function handles GET requests
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -39,16 +45,27 @@ public class SeeFoodServlet extends HttpServlet {
 		String cuisine = request.getParameter("cuisine");
 		String price = request.getParameter("price");
 		String distance = request.getParameter("distance");
-		// this token is for the Zomato API
-		String token = "e91d6840e9bdbf46f2a077c83e2f62ea";
 
 		request.getRequestDispatcher("/WEB-INF/jsp/ResultsPage.jsp").forward(request, response);
-		
-		
+
 	}
-	
+
 	public int getCuisineID(String cuisine) {
-		return 73;
+		WebTarget target = client.target("https://developers.zomato.com/api/v2.1/cuisines");
+		Response response = target.queryParam("lat", lat).queryParam("lon", lon)
+				.request(MediaType.APPLICATION_JSON).header("user-key", token).get();
+		String reply = response.readEntity(String.class);
+		JsonReader reader = Json.createReader(new StringReader(reply));
+		JsonObject cuisinesObject = reader.readObject();
+		
+		for(JsonValue c : cuisinesObject.getJsonArray("cuisines")) {
+			JsonObject cui = c.asJsonObject().getJsonObject("cuisine");
+			
+			if(cui.getString("cuisine_name").equals(cuisine)) {
+				return cui.getInt("cuisine_id");
+			}
+		}
+		return -1;
 	}
 
 }
