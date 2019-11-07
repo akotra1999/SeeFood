@@ -67,5 +67,21 @@ public class SeeFoodServlet extends HttpServlet {
 		}
 		return -1;
 	}
+	
+	// Convert the distance selection into meters (miles to meters)
+	public float convertMilesToMeters(String miles) {
+		if (String miles == "1") {
+			return 1609.34;
+		}
+		else if (String miles == "5") {
+			return 8046.72;
+		}
+		else if (String miles == "10") {
+			return 16093.4;
+		}
+		else if (String miles == "20") {
+			return 32186.9;
+		}
+	}
 
 }
