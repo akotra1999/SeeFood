@@ -70,17 +70,28 @@ public class SeeFoodServlet extends HttpServlet {
 	
 	// Convert the distance selection into meters (miles to meters)
 	public float convertMilesToMeters(String miles) {
+		float x;
 		if (miles == "1") {
-			return 1609.34;
+			x= (float)1609.34;
+			return x;	
 		}
 		else if (miles == "5") {
-			return 8046.72;
+			x =  (float)8046.72;
+			return x;
 		}
 		else if (miles == "10") {
-			return 16093.4;
+			x = (float) 16093.4;
+			return x;
 		}
 		else if (miles == "20") {
-			return 32186.9;
+			
+		x = (float) 32186.9;
+		return x;
+		}
+		else 
+		{
+			x = 0;
+			return x;
 		}
 	}
 
