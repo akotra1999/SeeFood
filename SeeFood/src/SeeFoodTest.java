@@ -30,5 +30,17 @@ class SeeFoodTest {
         	assertEquals(16093.4, server.convertMilesToMeters("10 mi"), 0.05);
     	}
 	
+	@Test
+	void testRestaurant () {
+		assertEquals(server.getRestaurant(60, 4, 32186.9).(0), "Abacus");
+		assertEquals(server.getRestaurant(60, 4, 32186.9).(1), "4511 McKinney Avenue, Knox Henderson 75205");
+	}
+	
+	@Test
+	void testRestaurant2 () {
+		assertEquals(server.getRestaurant(73, 4, 32186.9).(0), "Javier's Gourmet Mexicano");
+		assertEquals(server.getRestaurant(73, 4, 32186.9).(1), "4912 Cole Avenue 75205");
+	}
+	
 
 }
