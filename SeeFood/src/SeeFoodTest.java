@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 class SeeFoodTest {
 	SeeFoodServlet server;
 
+	// this function is run before every test case
 	@BeforeEach
 	public void beforeEachTestMethod() {
 		server = new SeeFoodServlet();

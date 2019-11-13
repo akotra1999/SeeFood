@@ -58,6 +58,7 @@ public class SeeFoodServlet extends HttpServlet {
 
 	}
 
+	// finds the ID for the cuisine the user has chosen
 	public int getCuisineID(String cuisine) {
 		WebTarget target = client.target("https://developers.zomato.com/api/v2.1/cuisines");
 		Response response = target.queryParam("lat", lat).queryParam("lon", lon).request(MediaType.APPLICATION_JSON)
@@ -76,6 +77,7 @@ public class SeeFoodServlet extends HttpServlet {
 		return -1;
 	}
 
+	// chooses a restaurant for the user
 	public List<String> getRestaurant(int cuisineID, int price, double distance) {
 		
 		WebTarget target = client.target("https://developers.zomato.com/api/v2.1/search");
