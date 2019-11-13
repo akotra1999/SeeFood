@@ -38,7 +38,7 @@ this is formatting for the card -->.card {
 		<!-- the card contains info regarding the chosen restaurant -->
 		<div class="card" style="width: 30rem;">
 
-			<img class="card-img-top" src=""
+			<img class="card-img-top" src="./restaurant.jpg"
 				alt="Photo of restaurant">
 
 			<div class="card-body">
