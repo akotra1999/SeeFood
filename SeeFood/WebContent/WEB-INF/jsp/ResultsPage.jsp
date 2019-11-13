@@ -38,16 +38,16 @@ this is formatting for the card -->.card {
 		<!-- the card contains info regarding the chosen restaurant -->
 		<div class="card" style="width: 30rem;">
 
-			<img class="card-img-top" src="./restaurant.jpg"
+			<img class="card-img-top" src="restaurant.jpg"
 				alt="Photo of restaurant">
 
 			<div class="card-body">
-				<h5 class="card-title">Name of restaurant</h5>
-				<p class="card-text">Cuisine</p>
+				<h5 class="card-title">${name}</h5>
+				<p class="card-text">${cuisine}</p>
 			</div>
 
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item">Address</li>
+				<li class="list-group-item">${address}</li>
 				<li class="list-group-item">Phone Number</li>
 				<li class="list-group-item">Average rating</li>
 			</ul>

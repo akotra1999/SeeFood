@@ -45,6 +45,14 @@ public class SeeFoodServlet extends HttpServlet {
 		String cuisine = request.getParameter("cuisine");
 		String price = request.getParameter("price");
 		String distance = request.getParameter("distance");
+		
+		int cuisineID = getCuisineID(cuisine);
+		double meters= convertMilesToMeters(distance);
+		List<String> restaurantInfo = getRestaurant(cuisineID, price.length(), meters);
+		
+		request.setAttribute("name", restaurantInfo.get(0));
+		request.setAttribute("address", restaurantInfo.get(1));
+		request.setAttribute("cuisine", cuisine);
 
 		request.getRequestDispatcher("/WEB-INF/jsp/ResultsPage.jsp").forward(request, response);
 
