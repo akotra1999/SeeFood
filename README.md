@@ -5,3 +5,4 @@ DESCRIPTION: It's Saturday night, and your friend group needs to decide quickly 
 SeeFood will solve this problem by finding the best-fit restaurant based on your preferences.
 
 ![image](https://github.com/akotra1999/SeeFood/blob/master/SeeFoodLogo.png)
+Credits: Logo designed by Kathryn Kingsley
