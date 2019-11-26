@@ -2,8 +2,11 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
+
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
@@ -50,10 +53,14 @@ public class SeeFoodServlet extends HttpServlet {
 		double meters= convertMilesToMeters(distance);
 		List<String> restaurantInfo = getRestaurant(cuisineID, price.length(), meters);
 		
+		if(restaurantInfo == null) {
+			request.getRequestDispatcher("/WEB-INF/jsp/NoRestaurant.jsp").forward(request, response);
+			return;
+		}
 		request.setAttribute("name", restaurantInfo.get(0));
 		request.setAttribute("address", restaurantInfo.get(1));
+		request.setAttribute("photo", restaurantInfo.get(2));
 		request.setAttribute("cuisine", cuisine);
-
 		request.getRequestDispatcher("/WEB-INF/jsp/ResultsPage.jsp").forward(request, response);
 
 	}
@@ -88,17 +95,23 @@ public class SeeFoodServlet extends HttpServlet {
 		JsonReader reader = Json.createReader(new StringReader(reply));
 		JsonObject responseObject = reader.readObject();
 		List<String> res = new ArrayList<String>();
+		Random rand = new Random();
+		int index = rand.nextInt(responseObject.getJsonArray("restaurants").size());
+		int counter = 0;
 		
 		for (JsonValue r : responseObject.getJsonArray("restaurants")) {
-			JsonObject restaurant = r.asJsonObject().getJsonObject("restaurant");
 			
-			if(restaurant.getInt("price_range") == price) {
+			if(counter == index) {
+				JsonObject restaurant = r.asJsonObject().getJsonObject("restaurant");
 				String name = restaurant.getString("name");
 				String address = restaurant.getJsonObject("location").getString("address");
+				String photoURL = restaurant.getString("featured_image");				
 				res.add(name);
 				res.add(address);
+				res.add(photoURL);
 				return res;
 			}
+			counter++;
 		}
 		return null;
 
