@@ -46,12 +46,22 @@ public class SeeFoodServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String cuisine = request.getParameter("cuisine");
-		String price = request.getParameter("price");
 		String distance = request.getParameter("distance");
 		
+		if(cuisine.equals("Cuisine")) {
+			String[] cuisines = new String[]{"American", "Mexican","Japanese", "Indian", "Chinese", "Mediterranean"};
+			Random rand = new Random();
+			int index = rand.nextInt(cuisines.length);
+			cuisine = cuisines[index];
+		}
+	
 		int cuisineID = getCuisineID(cuisine);
+		if(distance.equals("Distance")) {
+			distance = "20 mi";
+		}
+		
 		double meters= convertMilesToMeters(distance);
-		List<String> restaurantInfo = getRestaurant(cuisineID, price.length(), meters);
+		List<String> restaurantInfo = getRestaurant(cuisineID, meters);
 		
 		if(restaurantInfo == null) {
 			request.getRequestDispatcher("/WEB-INF/jsp/NoRestaurant.jsp").forward(request, response);
@@ -60,6 +70,9 @@ public class SeeFoodServlet extends HttpServlet {
 		request.setAttribute("name", restaurantInfo.get(0));
 		request.setAttribute("address", restaurantInfo.get(1));
 		request.setAttribute("photo", restaurantInfo.get(2));
+		request.setAttribute("url", restaurantInfo.get(3));
+		request.setAttribute("phoneNumbers", restaurantInfo.get(4));
+		request.setAttribute("rating", restaurantInfo.get(5));
 		request.setAttribute("cuisine", cuisine);
 		request.getRequestDispatcher("/WEB-INF/jsp/ResultsPage.jsp").forward(request, response);
 
@@ -85,7 +98,7 @@ public class SeeFoodServlet extends HttpServlet {
 	}
 
 	// chooses a restaurant for the user
-	public List<String> getRestaurant(int cuisineID, int price, double distance) {
+	public List<String> getRestaurant(int cuisineID, double distance) {
 		
 		WebTarget target = client.target("https://developers.zomato.com/api/v2.1/search");
 		Response response = target.queryParam("lat", lat).queryParam("lon", lon)
@@ -105,10 +118,16 @@ public class SeeFoodServlet extends HttpServlet {
 				JsonObject restaurant = r.asJsonObject().getJsonObject("restaurant");
 				String name = restaurant.getString("name");
 				String address = restaurant.getJsonObject("location").getString("address");
-				String photoURL = restaurant.getString("featured_image");				
+				String photoUrl = restaurant.getString("featured_image");	
+				String url = restaurant.getString("url");
+				String phoneNumbers = restaurant.getString("phone_numbers");
+				String rating = restaurant.getJsonObject("user_rating").getString("aggregate_rating");
 				res.add(name);
 				res.add(address);
-				res.add(photoURL);
+				res.add(photoUrl);
+				res.add(url);
+				res.add(phoneNumbers);
+				res.add(rating);
 				return res;
 			}
 			counter++;
@@ -120,17 +139,16 @@ public class SeeFoodServlet extends HttpServlet {
 	// Convert the distance selection into meters (miles to meters)
 	public float convertMilesToMeters(String miles) {
 		float x;
-		if (miles == "1 mi") {
+		if (miles.equals("1 mi")) {
 			x = (float) 1609.34;
 			return x;
-		} else if (miles == "5 mi") {
+		} else if (miles.equals("5 mi")) {
 			x = (float) 8046.72;
 			return x;
-		} else if (miles == "10 mi") {
+		} else if (miles.equals("10 mi")) {
 			x = (float) 16093.4;
 			return x;
-		} else if (miles == "20 mi") {
-
+		} else if (miles.equals("20 mi")) {
 			x = (float) 32186.9;
 			return x;
 		} else {

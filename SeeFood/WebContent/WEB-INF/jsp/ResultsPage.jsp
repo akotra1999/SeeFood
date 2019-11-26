@@ -47,12 +47,12 @@
 
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">${address}</li>
-				<li class="list-group-item">Phone Number</li>
-				<li class="list-group-item">Average rating</li>
+				<li class="list-group-item">${phoneNumbers}</li>
+				<li class="list-group-item">${rating}/5</li>
 			</ul>
 
 			<div class="card-body">
-				<a href="#" class="card-link">Restaurant's website</a> <a href="javascript:window.location.reload(true)"
+				<a href="${url}" class="card-link">More info</a> <a href="javascript:window.location.reload(true)"
 					class="card-link">Pick another restaurant</a>
 			</div>
 

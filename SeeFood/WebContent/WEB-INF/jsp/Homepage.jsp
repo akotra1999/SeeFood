@@ -44,7 +44,7 @@
 
 			<div class="row">
 
-				<div class="col-sm-3">
+				<div class="col-sm-4">
 
 					<select class="selectpicker" name="cuisine">
 						<option selected>Cuisine</option>
@@ -58,19 +58,7 @@
 
 				</div>
 
-				<div class="col-sm-3">
-
-					<select class="selectpicker" name="price">
-						<option selected>Price</option>
-						<option value="$">$</option>
-						<option value="$$">$$</option>
-						<option value="$$$">$$$</option>
-						<option value="$$$$">$$$$</option>
-					</select>
-
-				</div>
-
-				<div class="col-sm-3">
+				<div class="col-sm-4">
 
 					<select class="selectpicker" name="distance">
 						<option selected>Distance</option>
@@ -82,7 +70,7 @@
 
 				</div>
 
-				<div class="col-sm-3">
+				<div class="col-sm-4">
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</div>
 
