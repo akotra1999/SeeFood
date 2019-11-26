@@ -20,10 +20,9 @@
 	crossorigin="anonymous">
 
 <style>
-<!--
-this is formatting for the card -->.card {
-	margin: 10% auto; /* Added */
-	float: none; /* Added */
+.card {
+        margin: 10% auto; /* Added */
+        float: none; /* Added */
 }
 </style>
 
@@ -38,7 +37,7 @@ this is formatting for the card -->.card {
 		<!-- the card contains info regarding the chosen restaurant -->
 		<div class="card" style="width: 30rem;">
 
-			<img class="card-img-top" src="restaurant.jpg"
+			<img class="card-img-top" src="https://d.zmtcdn.com/data/pictures/chains/8/16774318/a54deb9e4dbb79dd7c8091b30c642077_featured_v2.png"
 				alt="Photo of restaurant">
 
 			<div class="card-body">
@@ -53,7 +52,7 @@ this is formatting for the card -->.card {
 			</ul>
 
 			<div class="card-body">
-				<a href="#" class="card-link">Restaurant's website</a> <a href="#"
+				<a href="#" class="card-link">Restaurant's website</a> <a href="javascript:window.location.reload(true)"
 					class="card-link">Pick another restaurant</a>
 			</div>
 
