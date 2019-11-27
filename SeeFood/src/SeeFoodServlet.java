@@ -60,18 +60,18 @@ public class SeeFoodServlet extends HttpServlet {
 		}
 		
 		double meters= convertMilesToMeters(distance);
-		List<String> restaurantInfo = getRestaurant(cuisineID, meters);
+		HashMap<String, String> restaurantInfo = getRestaurant(cuisineID, meters);
 		
 		if(restaurantInfo == null) {
 			request.getRequestDispatcher("/WEB-INF/jsp/NoRestaurant.jsp").forward(request, response);
 			return;
 		}
-		request.setAttribute("name", restaurantInfo.get(0));
-		request.setAttribute("address", restaurantInfo.get(1));
-		request.setAttribute("photo", restaurantInfo.get(2));
-		request.setAttribute("url", restaurantInfo.get(3));
-		request.setAttribute("phoneNumbers", restaurantInfo.get(4));
-		request.setAttribute("rating", restaurantInfo.get(5));
+		request.setAttribute("name", restaurantInfo.get("name"));
+		request.setAttribute("address", restaurantInfo.get("address"));
+		request.setAttribute("photo", restaurantInfo.get("photoUrl"));
+		request.setAttribute("url", restaurantInfo.get("url"));
+		request.setAttribute("phoneNumbers", restaurantInfo.get("phoneNumbers"));
+		request.setAttribute("rating", restaurantInfo.get("rating"));
 		request.setAttribute("cuisine", cuisine);
 		request.getRequestDispatcher("/WEB-INF/jsp/ResultsPage.jsp").forward(request, response);
 
@@ -97,7 +97,7 @@ public class SeeFoodServlet extends HttpServlet {
 	}
 
 	// chooses a restaurant for the user
-	public List<String> getRestaurant(int cuisineID, double distance) {
+	public HashMap<String, String> getRestaurant(int cuisineID, double distance) {
 		
 		WebTarget target = client.target("https://developers.zomato.com/api/v2.1/search");
 		Response response = target.queryParam("lat", lat).queryParam("lon", lon)
@@ -106,7 +106,7 @@ public class SeeFoodServlet extends HttpServlet {
 		String reply = response.readEntity(String.class);
 		JsonReader reader = Json.createReader(new StringReader(reply));
 		JsonObject responseObject = reader.readObject();
-		List<String> res = new ArrayList<String>();
+		HashMap<String, String> res = new HashMap<String, String>();
 		Random rand = new Random();
 		int index = rand.nextInt(responseObject.getJsonArray("restaurants").size());
 		int counter = 0;
@@ -121,12 +121,13 @@ public class SeeFoodServlet extends HttpServlet {
 				String url = restaurant.getString("url");
 				String phoneNumbers = restaurant.getString("phone_numbers");
 				String rating = restaurant.getJsonObject("user_rating").getString("aggregate_rating");
-				res.add(name);
-				res.add(address);
-				res.add(photoUrl);
-				res.add(url);
-				res.add(phoneNumbers);
-				res.add(rating);
+				System.out.println(rating);
+				res.put("name", name);
+				res.put("address", address);
+				res.put("photoUrl", photoUrl);
+				res.put("url", url);
+				res.put("phoneNumbers", phoneNumbers);
+				res.put("rating", rating);
 				return res;
 			}
 			counter++;

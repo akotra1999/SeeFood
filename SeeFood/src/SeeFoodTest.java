@@ -47,7 +47,7 @@ class SeeFoodTest {
 	@Test
 	void testRestaurantName3() {
 		HashMap<String, String> restaurantInfo = server.getRestaurant(148, 1609.34);
-		assertNotNull(restaurantInfo.get("name"));FF
+		assertNotNull(restaurantInfo.get("name"));
 	}
 
 	@Test
@@ -118,7 +118,7 @@ class SeeFoodTest {
 
 	@Test
 	void testRestaurantRating3() {
-		HashMap<String, String> restaurantInfo = server.getRestaurant(48, 16093.4);
+		HashMap<String, String> restaurantInfo = server.getRestaurant(148, 16093.4);
 		assertNotNull(restaurantInfo.get("rating"));
 	}
 }
