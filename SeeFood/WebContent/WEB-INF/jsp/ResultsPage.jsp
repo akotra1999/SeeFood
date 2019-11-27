@@ -48,7 +48,6 @@
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">${address}</li>
 				<li class="list-group-item">${phoneNumbers}</li>
-				<li class="list-group-item">${rating}/5</li>
 			</ul>
 
 			<div class="card-body">

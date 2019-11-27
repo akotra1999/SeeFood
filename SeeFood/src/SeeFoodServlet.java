@@ -71,7 +71,6 @@ public class SeeFoodServlet extends HttpServlet {
 		request.setAttribute("photo", restaurantInfo.get("photoUrl"));
 		request.setAttribute("url", restaurantInfo.get("url"));
 		request.setAttribute("phoneNumbers", restaurantInfo.get("phoneNumbers"));
-		request.setAttribute("rating", restaurantInfo.get("rating"));
 		request.setAttribute("cuisine", cuisine);
 		request.getRequestDispatcher("/WEB-INF/jsp/ResultsPage.jsp").forward(request, response);
 
@@ -114,19 +113,44 @@ public class SeeFoodServlet extends HttpServlet {
 		for (JsonValue r : responseObject.getJsonArray("restaurants")) {
 			
 			if(counter == index) {
+				
+				if(!r.asJsonObject().containsKey("restaurant")) {
+					break;
+				}
 				JsonObject restaurant = r.asJsonObject().getJsonObject("restaurant");
-				String name = restaurant.getString("name");
-				String address = restaurant.getJsonObject("location").getString("address");
-				String photoUrl = restaurant.getString("featured_image");	
-				String url = restaurant.getString("url");
-				String phoneNumbers = restaurant.getString("phone_numbers");
-				String rating = restaurant.getJsonObject("user_rating").getString("aggregate_rating");
+				String name = "Not Found";
+				String address = "Not Found";
+				String photoUrl = "Not Found";
+				String url = "Not Found";
+				String phoneNumbers = "Not Found";
+				
+				if(restaurant.containsKey("name")) {
+					name = restaurant.getString("name");
+				}
+			
+				if(restaurant.containsKey("location")) {
+					
+					if(restaurant.getJsonObject("location").containsKey("address")) {
+						address = restaurant.getJsonObject("location").getString("address");
+					}
+				}
+				
+				if(restaurant.containsKey("featured_image")) {
+					photoUrl = restaurant.getString("featured_image");
+				}
+				
+				if(restaurant.containsKey("url")) {
+					url = restaurant.getString("url");
+				}
+				
+				if(restaurant.containsKey("phone_numbers")) {
+					phoneNumbers = restaurant.getString("phone_numbers");
+				}
 				res.put("name", name);
 				res.put("address", address);
 				res.put("photoUrl", photoUrl);
 				res.put("url", url);
 				res.put("phoneNumbers", phoneNumbers);
-				res.put("rating", rating);
 				return res;
 			}
 			counter++;
