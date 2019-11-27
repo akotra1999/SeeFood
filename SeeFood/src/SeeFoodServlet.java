@@ -93,7 +93,7 @@ public class SeeFoodServlet extends HttpServlet {
 				return cui.getInt("cuisine_id");
 			}
 		}
-		return -1;
+		return 25;
 	}
 
 	// chooses a restaurant for the user
@@ -121,7 +121,6 @@ public class SeeFoodServlet extends HttpServlet {
 				String url = restaurant.getString("url");
 				String phoneNumbers = restaurant.getString("phone_numbers");
 				String rating = restaurant.getJsonObject("user_rating").getString("aggregate_rating");
-				System.out.println(rating);
 				res.put("name", name);
 				res.put("address", address);
 				res.put("photoUrl", photoUrl);
