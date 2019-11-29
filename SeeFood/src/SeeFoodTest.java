@@ -3,15 +3,20 @@ import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * SeeFoodTest has all of our test cases
+ *
+ */
 class SeeFoodTest {
 	SeeFoodServlet server;
 
-	// this function is run before every test case
+	// this method is called before every test case
 	@BeforeEach
-	public void beforeEachTestMethod() {
+	void beforeEachTestMethod() {
 		server = new SeeFoodServlet();
 	}
 
+	// testing getCuisineID
 	@Test
 	void testCuisineID() {
 		assertEquals(73, server.getCuisineID("Mexican"));
@@ -22,6 +27,7 @@ class SeeFoodTest {
 		assertEquals(60, server.getCuisineID("Japanese"));
 	}
 
+	// testing convertMilestoMeters
 	@Test
 	void testMeters() {
 		assertEquals(8046.72, server.convertMilesToMeters("5 mi"), 0.05);
@@ -32,6 +38,9 @@ class SeeFoodTest {
 		assertEquals(16093.4, server.convertMilesToMeters("10 mi"), 0.05);
 	}
 
+	// testing getRestaurant
+	// we cannot check for a particular restaurant as the getRestaurant involves
+	// randomization
 	@Test
 	void testRestaurantName() {
 		HashMap<String, String> restaurantInfo = server.getRestaurant(1, 1609.34);
