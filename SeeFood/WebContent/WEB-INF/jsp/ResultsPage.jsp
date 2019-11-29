@@ -4,7 +4,6 @@
 
 <!-- This page is for displaying a restaurant to the user -->
 
-<html>
 <html lang="en">
 <head>
 

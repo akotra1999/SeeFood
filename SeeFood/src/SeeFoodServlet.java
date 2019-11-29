@@ -1,14 +1,8 @@
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.json.JsonValue;
@@ -18,13 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 public class SeeFoodServlet extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	Client client = ClientBuilder.newClient();
 
 	// this token is for the Zomato API

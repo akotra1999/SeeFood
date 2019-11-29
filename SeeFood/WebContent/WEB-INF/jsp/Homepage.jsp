@@ -4,7 +4,7 @@
 <!-- This page is the first page the user sees -->
 <!DOCTYPE html>
 
-<html>
+
 <html lang="en">
 <head>
 
