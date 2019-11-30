@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<!-- This page is displayed when the servlet cannot find a restaurant -->
 <!DOCTYPE html>
 
 
@@ -25,7 +27,7 @@
 
 	<div class="container">
 
-		<!--  the jumbotron contains the title, a description, and a button that takes the user to our code -->
+		<!--  the jumbotron tells the user no restaurant was found -->
 		<div class="jumbotron">
 
 			<h1 class="display-4">No restaurant found</h1>

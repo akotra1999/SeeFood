@@ -39,7 +39,7 @@
 		</div>
 
 
-		<!--  this form is for the user to enter cuisine, price, and distance info -->
+		<!--  this form is for the user to enter cuisine and distance info -->
 		<form method="post">
 
 			<div class="row">
